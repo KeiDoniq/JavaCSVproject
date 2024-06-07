@@ -1,33 +1,29 @@
 package org.edu.vsu;
-
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static org.edu.vsu.CSVToList.readFromCSV;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CSVToListTest {
     @Test
     void readFromEmptyFile() {
-        ArrayList<Person> people = readFromCSV("empty_file.csv", ';');
+        ArrayList<Person> people = CSVToList.readFromCSV("empty_file.csv", ';');
         assertEquals(0, people.size());
     }
     @Test
     void readFromNotExistingFile() {
-        assertThrows(RuntimeException.class, () -> readFromCSV("file.csv", ';'));
+        assertThrows(RuntimeException.class, () -> CSVToList.readFromCSV("file.csv", ';'));
     }
     @Test
     void departmentNameTest() {
-        ArrayList<Person> people = readFromCSV("departmentK_file.csv", ';');
+        ArrayList<Person> people = CSVToList.readFromCSV("departmentK_file.csv", ';');
         for(Person person: people){
             assertEquals("K", person.getDepartment().getName());
         }
     }
     @Test
     void sameDepartmentTest() {
-        ArrayList<Person> people = readFromCSV("departmentK_file.csv", ';');
+        ArrayList<Person> people = CSVToList.readFromCSV("departmentK_file.csv", ';');
         Department department = new Department("K");
         for(Person person: people){
             assertEquals(department, person.getDepartment());
@@ -35,7 +31,7 @@ class CSVToListTest {
     }
     @Test
     void sameGenderTest() {
-        ArrayList<Person> people = readFromCSV("genderMale_file.csv", ';');
+        ArrayList<Person> people = CSVToList.readFromCSV("genderMale_file.csv", ';');
         String gender = "Male";
         for(Person person: people){
             assertEquals(gender, person.getGender());
@@ -44,7 +40,7 @@ class CSVToListTest {
 
     @Test
     void readFromCSVTest() {
-        ArrayList<Person> peopleCSV = readFromCSV("test_names.csv", ';');
+        ArrayList<Person> peopleCSV = CSVToList.readFromCSV("test_names.csv", ';');
         ArrayList<Person> people = new ArrayList<>(Arrays.asList(
                 new Person("28468", "Abisha", "Male", "22.01.1944", "H", "3800"),
                 new Person("28469","Abital","Female","04.04.1933","E","7800"),

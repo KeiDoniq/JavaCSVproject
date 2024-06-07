@@ -4,7 +4,19 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Класс CSVToList предоставляет функциональность для чтения данных из CSV файла
+ * и преобразования их в список объектов типа Person.
+ */
 public class CSVToList {
+    /**
+     * Считывает данные из CSV файла и преобразует их в список объектов типа Person.
+     *
+     * @param csvFilePath путь к CSV файлу для чтения.
+     * @param separator символ, используемый для разделения значений в CSV файле.
+     * @return список объектов типа Person, считанных из CSV файла.
+     * @throws RuntimeException если возникает ошибка ввода-вывода при чтении файла.
+     */
     static ArrayList<Person> readFromCSV(String csvFilePath, Character separator) {
         ArrayList<Person> people = new ArrayList<>();
         try (InputStream in = CSVToList.class.getClassLoader().getResourceAsStream(csvFilePath);
