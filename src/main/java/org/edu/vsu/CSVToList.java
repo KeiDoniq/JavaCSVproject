@@ -4,10 +4,10 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.util.ArrayList;
 
-public class csvToList {
+public class CSVToList {
     static ArrayList<Person> readFromCSV(String csvFilePath, Character separator) {
         ArrayList<Person> people = new ArrayList<>();
-        try (InputStream in = csvToList.class.getClassLoader().getResourceAsStream(csvFilePath);
+        try (InputStream in = CSVToList.class.getClassLoader().getResourceAsStream(csvFilePath);
              CSVReader reader = in == null ? null : new CSVReader(new InputStreamReader(in), separator)) {
             if (reader == null)
                 throw new FileNotFoundException(csvFilePath);
